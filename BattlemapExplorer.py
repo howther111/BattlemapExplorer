@@ -10,6 +10,11 @@ def main():
     speed = settings.speed
     avatarpix = settings.avatarpix
     mapzoom = settings.mapzoom
+    with open("zoom.txt") as f:
+        print(f)
+        mapzoom = f.read()
+        # <class '_io.TextIOWrapper'>
+
     screen = pygame.display.set_mode((screenx, screeny))  # 画面を作成
     pygame.display.set_caption("Pygame sample app")  # タイトルを作成
     img2xdest = 0
