@@ -11,6 +11,11 @@ def main():
     defspeed = speed
     avatarpix = settings.avatarpix
     mapzoom = settings.mapzoom
+    followerx = 200
+    followery = 0
+    followermin = -200
+    followermax = 200
+
     with open("zoom.txt") as f:
         print(f)
         mapzoom = float(f.read())
@@ -20,8 +25,8 @@ def main():
     pygame.display.set_caption("Pygame sample app")  # タイトルを作成
     img2xdest = 0
     img2ydest = 0
-    img3xdest = 0
-    img3ydest = 0
+    img3xdest = followerx
+    img3ydest = followery
     # 普通に画像を表示する方法
     img1 = pygame.image.load("map/map.png")
     img1xsize = img1.get_width()
@@ -35,6 +40,9 @@ def main():
     img2ydest = (screeny // 2) - (avatarpix // 2)
     img1xdest = ((img1xsize2 * -1) // 2) + (avatarpix // 2)
     img1ydest = (img1ysize2 * -1) + (avatarpix * 2) + avatarpix
+
+    img3xdest = (screenx // 2) - (avatarpix // 2) + followerx
+    img3ydest = (screeny // 2) - (avatarpix // 2) + followery
 
     # 画像を描画
     # ---------------  1.画像を読み込む  --------------------------
@@ -59,6 +67,7 @@ def main():
         # ---------------  2.画像を表示  --------------------------
         screen.blit(img1, dest=(img1xdest, img1ydest))
         screen.blit(img2, dest=(img2xdest, img2ydest))
+        screen.blit(img3, dest=(img3xdest, img3ydest))
         #screen.blit(img3, dest=(img3xdest, img3ydest))
 
         pygame.display.update()  # 描画処理を実行
@@ -70,12 +79,23 @@ def main():
 
         if pressed_key[K_LEFT]:
             img1xdest = img1xdest + speed
+            if followerx < followermax:
+                followerx = followerx + speed
         if pressed_key[K_RIGHT]:
             img1xdest = img1xdest - speed
+            if followerx > followermin:
+                followerx = followerx - speed
         if pressed_key[K_UP]:
             img1ydest = img1ydest + speed
+            if followery < followermax:
+                followery = followery + speed
         if pressed_key[K_DOWN]:
             img1ydest = img1ydest - speed
+            if followery > followermin:
+                followery = followery - speed
+
+        img3xdest = (screenx // 2) - (avatarpix // 2) + followerx
+        img3ydest = (screeny // 2) - (avatarpix // 2) + followery
 
         for event in pygame.event.get():
             # キーイベント処理(キャラクタ画像の移動)
