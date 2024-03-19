@@ -12,8 +12,6 @@ def main():
     mapzoom = settings.mapzoom
     screen = pygame.display.set_mode((screenx, screeny))  # 画面を作成
     pygame.display.set_caption("Pygame sample app")  # タイトルを作成
-    img1xdest = 0
-    img1ydest = 0
     img2xdest = 0
     img2ydest = 0
     img3xdest = 0
@@ -24,10 +22,13 @@ def main():
     img1ysize = img1.get_height()
     img1xsize2 = img1xsize * mapzoom
     img1ysize2 = img1ysize * mapzoom
+
     img1 = pygame.transform.scale(img1, (img1xsize2, img1ysize2))
     mapx, mapy = img1.get_size()
     img2xdest = (screenx // 2) - (avatarpix // 2)
     img2ydest = (screeny // 2) - (avatarpix // 2)
+    img1xdest = ((img1xsize2 * -1) // 2) + (avatarpix // 2)
+    img1ydest = (img1ysize2 * -1) + (avatarpix * 2) + avatarpix
 
     # 画像を描画
     # ---------------  1.画像を読み込む  --------------------------
