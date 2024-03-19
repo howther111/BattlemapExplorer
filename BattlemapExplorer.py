@@ -8,11 +8,12 @@ def main():
     screenx = 1440
     screeny = 810
     speed = settings.speed
+    defspeed = speed
     avatarpix = settings.avatarpix
     mapzoom = settings.mapzoom
     with open("zoom.txt") as f:
         print(f)
-        mapzoom = f.read()
+        mapzoom = float(f.read())
         # <class '_io.TextIOWrapper'>
 
     screen = pygame.display.set_mode((screenx, screeny))  # 画面を作成
@@ -62,6 +63,11 @@ def main():
 
         pygame.display.update()  # 描画処理を実行
         pressed_key = pygame.key.get_pressed()
+        if pressed_key[K_LSHIFT]:
+            speed = defspeed * 2.5
+        else:
+            speed = defspeed
+
         if pressed_key[K_LEFT]:
             img1xdest = img1xdest + speed
         if pressed_key[K_RIGHT]:
