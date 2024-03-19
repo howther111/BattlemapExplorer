@@ -22,7 +22,7 @@ def main():
         # <class '_io.TextIOWrapper'>
 
     screen = pygame.display.set_mode((screenx, screeny))  # 画面を作成
-    pygame.display.set_caption("Pygame sample app")  # タイトルを作成
+    pygame.display.set_caption("Battlemap Explorer")  # タイトルを作成
     img2xdest = 0
     img2ydest = 0
     img3xdest = followerx
@@ -110,9 +110,10 @@ def main():
                     sys.exit()
 
                 else:
-                    print("押されたキー = " + pygame.key.name(event.key))
-                    print(img1xdest)
-                    print(img1ydest)
+                    pass
+                    #print("押されたキー = " + pygame.key.name(event.key))
+                    #print(img1xdest)
+                    #print(img1ydest)
 
         pygame.display.update()  # 画面更新
         pygame.time.wait(30)  # 更新時間間隔
