@@ -66,9 +66,12 @@ def main():
 
         # ---------------  2.画像を表示  --------------------------
         screen.blit(img1, dest=(img1xdest, img1ydest))
-        screen.blit(img2, dest=(img2xdest, img2ydest))
-        screen.blit(img3, dest=(img3xdest, img3ydest))
-        #screen.blit(img3, dest=(img3xdest, img3ydest))
+        if img2ydest < img3ydest:
+            screen.blit(img2, dest=(img2xdest, img2ydest))
+            screen.blit(img3, dest=(img3xdest, img3ydest))
+        else:
+            screen.blit(img3, dest=(img3xdest, img3ydest))
+            screen.blit(img2, dest=(img2xdest, img2ydest))
 
         pygame.display.update()  # 描画処理を実行
         pressed_key = pygame.key.get_pressed()
