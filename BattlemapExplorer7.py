@@ -119,17 +119,16 @@ def main():
                 if followery <= followermin:
                     followery = followermin
         if pressed_key[K_e]:
-            if followermax > 0:
-                followermax = followermax + speed
-                followermin = followermin - speed
-                if followerx == followermax - speed:
-                    followerx = followermax
-                if followerx == followermin + speed:
-                    followerx = followermin
-                if followery == followermax - speed:
-                    followery = followermax
-                if followery == followermin + speed:
-                    followery = followermin
+            followermax = followermax + speed
+            followermin = followermin - speed
+            if followerx == followermax - speed:
+                followerx = followermax
+            if followerx == followermin + speed:
+                followerx = followermin
+            if followery == followermax - speed:
+                followery = followermax
+            if followery == followermin + speed:
+                followery = followermin
 
         img3xdest = (screenx // 2) - (avatarpix // 2) + followerx
         img3ydest = (screeny // 2) - (avatarpix // 2) + followery
