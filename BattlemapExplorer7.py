@@ -100,14 +100,20 @@ def main():
                 followery = followery - speed
         if pressed_key[K_a]:
             followerx = followerx - speed
+            if followerx < followermin:
+                followermin = followerx
         if pressed_key[K_d]:
             followerx = followerx + speed
+            if followerx > followermax:
+                followermax = followerx
         if pressed_key[K_w]:
             followery = followery - speed
+            if followery < followermin:
+                followermin = followery
         if pressed_key[K_s]:
             followery = followery + speed
         if pressed_key[K_q]:
-            if followermax > 0:
+            if followermax > 1:
                 followermax = followermax - speed
                 followermin = followermin + speed
                 if followerx >= followermax:
