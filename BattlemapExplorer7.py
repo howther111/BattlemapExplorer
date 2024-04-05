@@ -98,22 +98,14 @@ def main():
             img1ydest = img1ydest - speed
             if followery > followermin:
                 followery = followery - speed
-        if pressed_key[K_a]:
+        if pressed_key[K_a] and followerx > followermin:
             followerx = followerx - speed
-            if followerx < followermin:
-                followermin = followerx
-        if pressed_key[K_d]:
+        if pressed_key[K_d] and followerx < followermax:
             followerx = followerx + speed
-            if followerx > followermax:
-                followermax = followerx
-        if pressed_key[K_w]:
+        if pressed_key[K_w] and followery > followermin:
             followery = followery - speed
-            if followery < followermin:
-                followermin = followery
-        if pressed_key[K_s]:
+        if pressed_key[K_s] and followery < followermax:
             followery = followery + speed
-            if followery > followermax:
-                followermax = followery
         if pressed_key[K_q]:
             if followermax > 1:
                 followermax = followermax - speed
