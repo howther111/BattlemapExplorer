@@ -112,6 +112,8 @@ def main():
                 followermin = followery
         if pressed_key[K_s]:
             followery = followery + speed
+            if followery > followermax:
+                followermax = followery
         if pressed_key[K_q]:
             if followermax > 1:
                 followermax = followermax - speed
